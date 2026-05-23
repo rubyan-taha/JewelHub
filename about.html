@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Zenvy</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ======= ABOUT PAGE ======= */
+
+    .page-header {
+      margin-top: 76px;
+      background: var(--emerald-deep);
+      padding: 80px 8% 70px;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 350px; height: 350px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.1);
+    }
+    .page-header::after {
+      content: '✦';
+      position: absolute; bottom: 20px; right: 8%;
+      font-size: 100px; opacity: 0.05; color: var(--gold);
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      color: var(--cream); font-weight: 300;
+    }
+    .page-header h1 span { color: var(--gold); font-style: italic; font-weight: 600; }
+    .page-header p {
+      font-size: 17px; color: var(--sage);
+      max-width: 560px; margin-top: 14px; line-height: 1.8;
+    }
+
+    /* Story section */
+    .story-section {
+      padding: 90px 8%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      background: var(--cream);
+    }
+    .story-visual {
+      position: relative;
+    }
+    .story-img-main {
+      width: 100%; height: 440px;
+      background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-mid));
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 100px;
+      box-shadow: var(--shadow-card);
+      position: relative; overflow: hidden;
+    }
+    .story-img-main::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 35% 35%, rgba(201,168,76,0.2), transparent 60%);
+    }
+    .story-tag {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--gold);
+      color: var(--emerald-deep);
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 700;
+      padding: 18px 24px;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+      text-align: center;
+    }
+    .story-tag strong { display: block; font-size: 28px; line-height: 1; }
+
+    .story-text .section-label { margin-bottom: 12px; }
+    .story-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3vw, 48px);
+      color: var(--emerald-deep); font-weight: 600;
+      line-height: 1.2; margin-bottom: 10px;
+    }
+    .story-text p {
+      color: #4a6358; font-size: 15px; line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .story-quote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(201,168,76,0.06);
+      border-radius: 0 12px 12px 0;
+    }
+    .story-quote p {
+      font-family: var(--font-display);
+      font-size: 19px; font-style: italic;
+      color: var(--emerald-deep); margin: 0;
+    }
+
+    /* Values section */
+    .values-section {
+      padding: 90px 8%;
+      background: var(--emerald-deep);
+    }
+    .values-header { text-align: center; margin-bottom: 60px; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .value-card {
+      text-align: center;
+      padding: 44px 30px;
+      border-radius: 20px;
+      background: rgba(45,106,79,0.3);
+      border: 1px solid rgba(149,213,178,0.12);
+      transition: var(--transition);
+    }
+    .value-card:hover {
+      background: rgba(45,106,79,0.5);
+      border-color: rgba(201,168,76,0.3);
+      transform: translateY(-6px);
+    }
+    .value-icon {
+      font-size: 42px; margin-bottom: 20px;
+      display: block;
+    }
+    .value-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px; color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .value-card p { font-size: 14px; color: var(--sage); line-height: 1.8; }
+
+    /* Process section */
+    .process-section {
+      padding: 90px 8%;
+      background: var(--cream-dark);
+    }
+    .process-header { text-align: center; margin-bottom: 60px; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      max-width: 1100px; margin: 0 auto;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 36px; left: 12%; right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold), var(--gold), transparent);
+      opacity: 0.35;
+    }
+    .process-step {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+    .step-num {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--emerald-deep);
+      border: 2px solid rgba(201,168,76,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 28px; color: var(--gold);
+      font-weight: 700;
+      margin: 0 auto 22px;
+      position: relative; z-index: 1;
+    }
+    .process-step h4 {
+      font-family: var(--font-display);
+      font-size: 18px; color: var(--emerald-deep);
+      margin-bottom: 8px;
+    }
+    .process-step p { font-size: 13px; color: #5a7066; line-height: 1.7; }
+
+    /* Team section */
+    .team-section {
+      padding: 90px 8%;
+      background: var(--cream);
+    }
+    .team-header { text-align: center; margin-bottom: 60px; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 960px; margin: 0 auto;
+    }
+    .team-card {
+      text-align: center;
+      padding: 36px 24px;
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(27,67,50,0.06);
+      border: 1px solid rgba(201,168,76,0.1);
+      transition: var(--transition);
+    }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+    .team-avatar {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px;
+      border: 3px solid var(--gold-light);
+    }
+    .team-card:nth-child(1) .team-avatar { background: linear-gradient(135deg, #2D6A4F, #1B4332); }
+    .team-card:nth-child(2) .team-avatar { background: linear-gradient(135deg, #1B4332, #2D6A4F); }
+    .team-card:nth-child(3) .team-avatar { background: linear-gradient(135deg, #52B788, #2D6A4F); }
+    .team-name {
+      font-family: var(--font-display);
+      font-size: 22px; color: var(--text);
+      margin-bottom: 4px;
+    }
+    .team-role { font-size: 13px; color: var(--emerald-light); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+    .team-bio { font-size: 14px; color: #5a7066; line-height: 1.7; }
+
+    @media (max-width: 1024px) {
+      .story-section { grid-template-columns: 1fr; gap: 40px; }
+      .values-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .values-grid, .team-grid, .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">ZENVY<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="collections.html" class="nav-cta">Shop Now</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="collections.html" class="btn btn-gold">Shop Now</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <p class="section-label">Our Story</p>
+    <h1>The Heart <span>Behind Zenvy</span></h1>
+    <p>Born from a passion for timeless beauty and ethical craftsmanship, Zenvy exists to make luxury jewelry accessible, personal, and meaningful.</p>
+  </header>
+
+  <!-- STORY SECTION -->
+  <section class="story-section">
+    <div class="story-visual reveal">
+      <div class="story-img-main">💍</div>
+      <div class="story-tag">
+        <strong>2019</strong>Founded
+      </div>
+    </div>
+    <div class="story-text reveal">
+      <p class="section-label">How It All Began</p>
+      <h2>From a Small Workshop to Your Hands</h2>
+      <div class="divider"></div>
+      <p>Zenvy was born in 2019 in a small artisan workshop, where founder Aria Patel began crafting one-of-a-kind pieces inspired by the natural world — forests, rivers, and the quiet elegance of organic forms.</p>
+      <p>What started as a personal passion quickly became a mission: to bring sustainable, certified luxury jewelry to people who believe that beauty should be felt, not just seen.</p>
+      <div class="story-quote">
+        <p>"Every piece we create is a promise — that beauty can be ethical, that luxury can be kind, and that jewelry can mean more than it costs."</p>
+      </div>
+      <a href="collections.html" class="btn btn-dark">Explore Our Pieces →</a>
+    </div>
+  </section>
+
+  <!-- VALUES SECTION -->
+  <section class="values-section">
+    <div class="values-header reveal">
+      <p class="section-label">What We Stand For</p>
+      <h2 class="section-title light">Our Core Values</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <span class="value-icon">🌿</span>
+        <h3>Sustainability</h3>
+        <p>We use recycled metals, conflict-free gemstones, and biodegradable packaging at every step of our production.</p>
+      </div>
+      <div class="value-card reveal" style="transition-delay:.1s">
+        <span class="value-icon">✦</span>
+        <h3>Craftsmanship</h3>
+        <p>Every piece is hand-finished by skilled artisans with 10+ years of experience in fine jewelry making.</p>
+      </div>
+      <div class="value-card reveal" style="transition-delay:.2s">
+        <span class="value-icon">❤️</span>
+        <h3>Inclusivity</h3>
+        <p>Luxury is for everyone. We offer adjustable sizing, customizable designs, and prices that respect your budget.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS SECTION -->
+  <section class="process-section">
+    <div class="process-header reveal">
+      <p class="section-label">Our Process</p>
+      <h2 class="section-title">How Each Piece Is Born</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">1</div>
+        <h4>Design & Sketch</h4>
+        <p>Our designers sketch each concept by hand, inspired by nature and your personal story.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.1s">
+        <div class="step-num">2</div>
+        <h4>Ethical Sourcing</h4>
+        <p>All metals and gemstones are ethically sourced with full traceability certificates.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.2s">
+        <div class="step-num">3</div>
+        <h4>Handcrafting</h4>
+        <p>Master artisans bring the sketch to life using traditional and modern techniques.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.3s">
+        <div class="step-num">4</div>
+        <h4>Quality Check</h4>
+        <p>Every piece passes a 12-point inspection before being gift-wrapped and shipped to you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section class="team-section">
+    <div class="team-header reveal">
+      <p class="section-label">The People</p>
+      <h2 class="section-title">Meet Our Team</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">👩</div>
+        <div class="team-name">Aria Patel</div>
+        <div class="team-role">Founder & Lead Designer</div>
+        <p class="team-bio">With over 15 years in fine jewelry, Aria blends traditional gemology with contemporary aesthetics.</p>
+      </div>
+      <div class="team-card reveal" style="transition-delay:.1s">
+        <div class="team-avatar">👨</div>
+        <div class="team-name">Marco Silva</div>
+        <div class="team-role">Master Craftsman</div>
+        <p class="team-bio">Trained in Florence's finest ateliers, Marco is the hands behind every Zenvy masterpiece.</p>
+      </div>
+      <div class="team-card reveal" style="transition-delay:.2s">
+        <div class="team-avatar">👩‍🦱</div>
+        <div class="team-name">Lena Zhao</div>
+        <div class="team-role">Head of Sustainability</div>
+        <p class="team-bio">Lena ensures every supply chain decision aligns with our commitment to a greener planet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">ZENVY.</div>
+        <p>Timeless jewelry, crafted with soul. Each piece is a story waiting to be worn.</p>
+        <div class="social-links">
+          <a href="#">✦</a><a href="#">◈</a><a href="#">♦</a><a href="#">⬡</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Collections</h4>
+        <ul>
+          <li><a href="collections.html">Rings</a></li>
+          <li><a href="collections.html">Necklaces</a></li>
+          <li><a href="collections.html">Earrings</a></li>
+          <li><a href="collections.html">Bracelets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@zenvy.com">hello@zenvy.com</a></li>
+          <li><a href="#">+1 (800) ZEN-VYCO</a></li>
+          <li><a href="contact.html">Send a Message</a></li>
+          <li><a href="#">Mon–Sat: 9am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Zenvy. All rights reserved.</span>
+      <span>Made with ♥ for jewelry lovers worldwide</span>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+</body>
+</html>

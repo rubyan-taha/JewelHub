@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – Zenvy</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ======= CONTACT PAGE ======= */
+
+    .page-header {
+      margin-top: 76px;
+      background: var(--emerald-deep);
+      padding: 80px 8% 70px;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 350px; height: 350px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.1);
+    }
+    .page-header::after {
+      content: '◈';
+      position: absolute; bottom: 10px; right: 8%;
+      font-size: 120px; opacity: 0.05; color: var(--gold);
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      color: var(--cream); font-weight: 300;
+    }
+    .page-header h1 span { color: var(--gold); font-style: italic; font-weight: 600; }
+    .page-header p {
+      font-size: 17px; color: var(--sage);
+      max-width: 520px; margin-top: 14px; line-height: 1.8;
+    }
+
+    /* Main contact section */
+    .contact-section {
+      padding: 80px 8%;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    /* Contact form */
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 50px 48px;
+      box-shadow: 0 8px 40px rgba(27,67,50,0.1);
+      border: 1px solid rgba(201,168,76,0.12);
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 30px; color: var(--emerald-deep);
+      margin-bottom: 6px;
+    }
+    .form-subtitle { font-size: 14px; color: #6a8a7a; margin-bottom: 34px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 13px; font-weight: 600;
+      color: var(--emerald-mid);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid rgba(27,67,50,0.15);
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--cream);
+      transition: var(--transition);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--emerald-light);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(82,183,136,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-group select { cursor: pointer; }
+
+    .form-check {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-bottom: 26px;
+    }
+    .form-check input[type="checkbox"] {
+      width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px;
+      accent-color: var(--emerald-mid);
+      cursor: pointer;
+    }
+    .form-check label {
+      font-size: 13px; color: #6a8a7a; line-height: 1.6;
+    }
+    .form-check label a { color: var(--emerald-mid); text-decoration: underline; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--emerald-deep);
+      color: var(--cream);
+      border: none; border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: var(--transition);
+      letter-spacing: 0.3px;
+    }
+    .submit-btn:hover { background: var(--emerald-mid); transform: translateY(-2px); box-shadow: var(--shadow-card); }
+    .submit-btn:active { transform: translateY(0); }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .form-success .success-icon {
+      font-size: 56px; margin-bottom: 16px;
+    }
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 26px; color: var(--emerald-deep);
+      margin-bottom: 8px;
+    }
+    .form-success p { color: #6a8a7a; font-size: 15px; }
+
+    /* Contact info sidebar */
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .info-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid rgba(201,168,76,0.12);
+      box-shadow: 0 4px 16px rgba(27,67,50,0.06);
+      transition: var(--transition);
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .info-card:hover { transform: translateX(4px); border-color: rgba(201,168,76,0.3); }
+    .info-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .info-card h4 {
+      font-family: var(--font-display);
+      font-size: 17px; color: var(--emerald-deep);
+      margin-bottom: 4px;
+    }
+    .info-card p, .info-card a {
+      font-size: 14px; color: #6a8a7a;
+      line-height: 1.7; display: block;
+    }
+    .info-card a:hover { color: var(--emerald-mid); }
+
+    /* Map placeholder */
+    .map-placeholder {
+      background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-mid));
+      border-radius: 16px;
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      border: 1px solid rgba(201,168,76,0.12);
+    }
+    .map-placeholder span { font-size: 34px; }
+    .map-placeholder p { color: var(--sage); font-size: 13px; }
+
+    /* FAQ section */
+    .faq-section {
+      padding: 80px 8%;
+      background: var(--cream-dark);
+    }
+    .faq-header { text-align: center; margin-bottom: 50px; }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid rgba(201,168,76,0.1);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .faq-item:hover { border-color: rgba(27,67,50,0.2); }
+    .faq-question {
+      padding: 20px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer;
+      font-weight: 600; font-size: 15px; color: var(--text);
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 20px; color: var(--emerald-mid);
+      transition: transform var(--transition);
+      flex-shrink: 0; margin-left: 10px;
+    }
+    .faq-item.open .faq-question::after { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 24px;
+      font-size: 14px; color: #6a8a7a; line-height: 1.8;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding: 0 24px 20px; }
+
+    @media (max-width: 1024px) {
+      .contact-section { grid-template-columns: 1fr; }
+      .contact-info { order: -1; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .contact-form-wrap { padding: 30px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">ZENVY<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="collections.html" class="nav-cta">Shop Now</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="collections.html" class="btn btn-gold">Shop Now</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <p class="section-label">Reach Out</p>
+    <h1>We'd Love to <span>Hear From You</span></h1>
+    <p>Whether you have a question, need help finding the perfect piece, or want a custom design — we're here for you.</p>
+  </header>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+
+    <!-- FORM -->
+    <div class="contact-form-wrap reveal">
+      <div id="formContent">
+        <h2 class="form-title">Send Us a Message</h2>
+        <p class="form-subtitle">We typically reply within 24 hours on weekdays.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Smith" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="jane@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">What's this about?</label>
+          <select id="subject">
+            <option value="" disabled selected>Select a subject...</option>
+            <option>Order & Shipping</option>
+            <option>Custom Jewelry Design</option>
+            <option>Product Inquiry</option>
+            <option>Returns & Exchanges</option>
+            <option>Partnership</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" placeholder="Tell us how we can help you..."></textarea>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="newsletter" />
+          <label for="newsletter">
+            I'd like to receive updates about new collections and exclusive offers from Zenvy.
+            <a href="#">Privacy Policy</a>
+          </label>
+        </div>
+
+        <button class="submit-btn" onclick="submitForm()">Send Message ✦</button>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">💎</div>
+        <h3>Message Received!</h3>
+        <p>Thank you for reaching out. A member of our team will get back to you within 24 hours.</p>
+      </div>
+    </div>
+
+    <!-- INFO SIDEBAR -->
+    <div class="contact-info reveal" style="transition-delay:.1s">
+
+      <div class="info-card">
+        <div class="info-icon">✉️</div>
+        <div>
+          <h4>Email Us</h4>
+          <a href="mailto:hello@zenvy.com">hello@zenvy.com</a>
+          <a href="mailto:support@zenvy.com">support@zenvy.com</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div>
+          <h4>Call Us</h4>
+          <a href="tel:+18009369826">+1 (800) ZEN-VYCO</a>
+          <p>Mon–Sat, 9:00 AM – 6:00 PM EST</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">💬</div>
+        <div>
+          <h4>Live Chat</h4>
+          <p>Available on our website</p>
+          <p>Mon–Fri: 9am–9pm EST</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📦</div>
+        <div>
+          <h4>Order Support</h4>
+          <p>Track your order or start a return easily.</p>
+          <a href="#">Track My Order →</a>
+        </div>
+      </div>
+
+      <div class="map-placeholder">
+        <span>🗺️</span>
+        <p>123 Emerald Ave, New York, NY 10001</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="faq-header reveal">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Common Questions</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-question">How long does shipping take?</div>
+        <div class="faq-answer">Standard shipping takes 5–7 business days. Express shipping (2–3 days) is available at checkout. All orders ship with full tracking and insurance.</div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.05s">
+        <div class="faq-question">Can I request a custom piece?</div>
+        <div class="faq-answer">Yes! We love custom orders. Just fill out the contact form and select "Custom Jewelry Design". We'll schedule a free consultation to discuss your vision.</div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.1s">
+        <div class="faq-question">What is your return policy?</div>
+        <div class="faq-answer">We offer free 30-day returns on all non-custom items. Custom pieces are non-returnable but we'll work with you to ensure you're 100% happy.</div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.15s">
+        <div class="faq-question">Are your gemstones ethically sourced?</div>
+        <div class="faq-answer">Absolutely. All gemstones are conflict-free and ethically sourced, and every piece comes with a Certificate of Authenticity.</div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.2s">
+        <div class="faq-question">Do you offer jewelry care services?</div>
+        <div class="faq-answer">Yes, we offer free lifetime polishing on all Zenvy pieces. Simply mail your piece back to us and we'll restore it to its original brilliance.</div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.25s">
+        <div class="faq-question">Which payment methods do you accept?</div>
+        <div class="faq-answer">We accept all major credit cards, PayPal, Apple Pay, and Google Pay. We also offer 0% installment payment plans on orders over $500.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">ZENVY.</div>
+        <p>Timeless jewelry, crafted with soul. Each piece is a story waiting to be worn.</p>
+        <div class="social-links">
+          <a href="#">✦</a><a href="#">◈</a><a href="#">♦</a><a href="#">⬡</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Collections</h4>
+        <ul>
+          <li><a href="collections.html">Rings</a></li>
+          <li><a href="collections.html">Necklaces</a></li>
+          <li><a href="collections.html">Earrings</a></li>
+          <li><a href="collections.html">Bracelets</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@zenvy.com">hello@zenvy.com</a></li>
+          <li><a href="#">+1 (800) ZEN-VYCO</a></li>
+          <li><a href="contact.html">Send a Message</a></li>
+          <li><a href="#">Mon–Sat: 9am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Zenvy. All rights reserved.</span>
+      <span>Made with ♥ for jewelry lovers worldwide</span>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Form submission
+    function submitForm() {
+      const name = document.getElementById('firstName').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      if (!name || !email || !message) {
+        alert('Please fill in your name, email, and message.');
+        return;
+      }
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
